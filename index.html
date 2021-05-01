@@ -14,29 +14,248 @@
   <link rel="shortcut icon" href="./icon.png" type="image/png">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       background: #090909;
-      color: #f8f8f8;
+      color: #efefef;
       font-family: sans-serif;
     }
 
-    ol {
-      column-count: 2;
+    h1, h2 {
+      text-align: center;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    small {
-      color: #66bb6a;
+    p {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      width: 240px;
+      background: #1c1c1c;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    @media screen and (min-width: 991px) {
+      p {
+        position: absolute;
+        top: 0.67em;
+        right: 30px;
+      }
     }
 
     a {
       color: #03a9f4;
       display: block;
+      margin-top: 6px;
+      text-decoration: none;
     }
 
-    @media screen and (min-width: 769px) {
-      ol {
-        column-count: 3;
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      counter-reset: count;
+      list-style-type: none;
+      padding: 0;
+      max-width: 90%;
+      margin: 0 auto;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    li {
+      flex-basis: 100%;
+      counter-increment: count;
+      background: #151515;
+      padding: 16px;
+      border-bottom: 2px solid #151515;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    @media screen and (min-width: 768px) {
+      li {
+        flex-basis: 48%;
       }
+    }
+
+    @media screen and (min-width: 991px) {
+      li {
+        flex-basis: 30%;
+      }
+    }
+
+    li span {
+      max-width: 90%;
+      display: block;
+    }
+
+    li:after {
+      content: counter(count);
+      position: absolute;
+      right: 0;
+      font-size: 5em;
+      color: #181818;
+      font-weight: bolder;
+      pointer-events: none;
+      bottom: 0;
+      line-height: 1;
+      height: 100%;
+      z-index: -1;
+    }
+
+    small {
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    .new {
+      border-bottom: 2px solid #66bb6a;
+    }
+
+    .new small {
+      background-color: #66bb6a;
+    }
+
+
+    .added {
+      border-bottom: 2px solid #FFC107;
+    }
+
+    .added small {
+      background-color: #FFC107;
+    }
+
+    #removed {
+      margin-bottom: 60px;
+    }* {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #090909;
+      color: #efefef;
+      font-family: sans-serif;
+    }
+
+    h1, h2 {
+      text-align: center;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    p {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      width: 240px;
+      background: #1c1c1c;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    @media screen and (min-width: 991px) {
+      p {
+        position: absolute;
+        top: 0.67em;
+        right: 30px;
+      }
+    }
+
+    a {
+      color: #03a9f4;
+      display: block;
+      margin-top: 6px;
+      text-decoration: none;
+    }
+
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      counter-reset: count;
+      list-style-type: none;
+      padding: 0;
+      max-width: 90%;
+      margin: 0 auto;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    li {
+      flex-basis: 100%;
+      counter-increment: count;
+      background: #151515;
+      padding: 16px;
+      border-bottom: 2px solid #151515;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    @media screen and (min-width: 768px) {
+      li {
+        flex-basis: 48%;
+      }
+    }
+
+    @media screen and (min-width: 991px) {
+      li {
+        flex-basis: 30%;
+      }
+    }
+
+    li span {
+      max-width: 90%;
+      display: block;
+    }
+
+    li:after {
+      content: counter(count);
+      position: absolute;
+      right: 0;
+      font-size: 5em;
+      color: #181818;
+      font-weight: bolder;
+      pointer-events: none;
+      bottom: 0;
+      line-height: 1;
+      height: 100%;
+      z-index: -1;
+    }
+
+    small {
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    .new {
+      border-bottom: 2px solid #66bb6a;
+    }
+
+    .new small {
+      background-color: #66bb6a;
+    }
+
+
+    .added {
+      border-bottom: 2px solid #FFC107;
+    }
+
+    .added small {
+      background-color: #FFC107;
+    }
+
+    #removed {
+      margin-bottom: 60px;
     }
   </style>
 </head>
@@ -44,436 +263,12 @@
 <body>
   <main>
     <h1>Netflix Bollywood and Hindi movies</h1>
-    <p>Last updated : 03 April 2021 <a href="#removed">View removed</a></p>
+    <p>Updated 01 May 2021 <a href="#removed-anchor">View removed</a></p>
+    
+    <ol id="list"><li class="new"><span>Tuesdays &amp; Fridays <small>new</small></span></li><li class="new"><span>Ajeeb Daastaans <small>new</small></span></li><li><span>Pagglait</span></li><li><span>The Girl on the Train</span></li><li><span>Tribhanga - Tedhi Medhi Crazy</span></li><li><span>Bombay Rose</span></li><li class="new"><span>Roohi <small>new</small></span></li><li><span>Ginny Weds Sunny</span></li><li><span>Raat Akeli Hai</span></li><li><span>Shimla Mirchi</span></li><li><span>Gunjan Saxena: The Kargil Girl</span></li><li><span>Indoo Ki Jawani</span></li><li><span>Madam Chief Minister</span></li><li><span>Bulbbul</span></li><li><span>Class of '83</span></li><li><span>Serious Men</span></li><li><span>Choked: Paisa Bolta Hai</span></li><li><span>Dolly Kitty Aur Woh Chamakte Sitare</span></li><li><span>Jai Mummy Di</span></li><li><span>AK vs AK</span></li><li><span>Love Aaj Kal</span></li><li><span>Ghost Stories</span></li><li><span>Torbaaz</span></li><li><span>Kaali Khuhi</span></li><li><span>Door Ke Darshan</span></li><li><span>Guilty</span></li><li><span>Mrs. Serial Killer</span></li><li><span>Chaman Bahaar</span></li><li><span>Maska</span></li><li><span>Axone</span></li><li><span>Little Singham: Kaal Ka Badla</span></li><li class="new"><span>Rudra: Secret of the Black Moon <small>new</small></span></li><li><span>Chippa</span></li><li><span>Har Kisse Ke Hisse: Kaamyaab</span></li><li><span>Yeh Ballet</span></li><li><span>Little Singham: Legend of Dugabakka</span></li><li><span>What Are the Odds?</span></li><li><span>Cargo</span></li><li><span>Ludo</span></li><li><span>Malang</span></li><li><span>Fukrey Boyzzz: Space Mein Fukrapanti</span></li><li class="new"><span>Ram Prasad Ki Tehrvi <small>new</small></span></li><li><span>Drive</span></li><li><span>Article 15</span></li><li><span>Badla</span></li><li><span>The Body</span></li><li><span>Made in China</span></li><li><span>Luka Chuppi</span></li><li><span>Thackeray (Hindi)</span></li><li><span>Kabir Singh</span></li><li><span>Panipat - The Great Betrayal</span></li><li><span>The Sky Is Pink</span></li><li><span>Motichoor Chaknachoor</span></li><li><span>Chopsticks</span></li><li><span>One Day: Justice Delivered</span></li><li><span>Game Over (Hindi Version)</span></li><li><span>Bypass Road</span></li><li><span>The Zoya Factor</span></li><li><span>Malaal</span></li><li><span>Romeo Akbar Walter</span></li><li><span>Ek Ladki Ko Dekha Toh Aisa Laga</span></li><li><span>Pranaam</span></li><li><span>House Arrest</span></li><li><span>Chhota Bheem Kungfu Dhamaka</span></li><li><span>Bhangra Paa Le</span></li><li><span>Eeb Allay Ooo!</span></li><li class="new"><span>Motu Patlu in the Game of Zones <small>new</small></span></li><li class="new"><span>Rudra: The Rise of King Pharaoh <small>new</small></span></li><li><span>Upstarts</span></li><li class="new"><span>Motu Patlu the Superheroes – Super Villains from Mars <small>new</small></span></li><li><span>Paharganj</span></li><li><span>Little Singham: Mahabali</span></li><li class="new"><span>Motu Patlu VS Robo Kids <small>new</small></span></li><li><span>Penalty</span></li><li><span>Albert Pinto Ko Gussa Kyun Aata Hai?</span></li><li><span>Little Singham Bandarpur Mein Hu Ha Hu</span></li><li class="new"><span>Shiva: Journey to Plunotaria <small>new</small></span></li><li><span>Music Teacher</span></li><li><span>Mere Pyare Prime Minister</span></li><li><span>Little Singham: Kaal Ki Tabaahi</span></li><li><span>Saaho</span></li><li><span>Rakkhosh</span></li><li><span>Andhadhun</span></li><li><span>Stree</span></li><li><span>Is Love Enough? Sir</span></li><li><span>Baazaar</span></li><li><span>Sanju</span></li><li><span>Zero</span></li><li><span>Lust Stories</span></li><li><span>Aiyaary</span></li><li><span>Love Per Square Foot</span></li><li><span>Parmanu: The Story of Pokhran</span></li><li><span>Pad Man</span></li><li><span>Rajma Chawal</span></li><li><span>Soorma</span></li><li><span>Mard Ko Dard Nahi Hota</span></li><li><span>Pihu</span></li><li><span>Beyond the Clouds</span></li><li class="new"><span>Motu Patlu in the City of Gold <small>new</small></span></li><li><span>Ascharyachakit!</span></li><li class="new"><span>Motu Patlu Kung Fu Kings 4 The Challenge of Kung Fu Brothers <small>new</small></span></li><li><span>Bhavesh Joshi Superhero</span></li><li><span>Soni</span></li><li><span>Hope Aur Hum</span></li><li><span>Garbage</span></li><li><span>Jaoon Kahan Bata Ae Dil</span></li><li><span>Manto</span></li><li class="new"><span>Motu Patlu Dino Invasion <small>new</small></span></li><li><span>Halkaa</span></li><li><span>My Birthday Song</span></li><li class="new"><span>Shiva VS Autobots <small>new</small></span></li><li><span>Evening Shadows</span></li><li><span>Brij Mohan Amar Rahe</span></li><li><span>Bheemayan</span></li><li><span>Kuchh Bheege Alfaaz</span></li><li><span>Bombairiya</span></li><li><span>Chhota Bheem Ka Romani Adventure</span></li><li><span>Hamid</span></li><li><span>Ladies First</span></li><li><span>Super Bheem Bana Vajraveer</span></li><li><span>Zoo</span></li><li><span>Samudri Lootere</span></li><li><span>Period. End of Sentence.</span></li><li><span>Dragonkala Ka Rahasya</span></li><li><span>Three and a Half</span></li><li><span>Life of An Outcast</span></li><li><span>Antariksha Ke Rakhwale</span></li><li><span>Naam Shabana</span></li><li><span>Baahubali 2: The Conclusion (Hindi Version)</span></li><li><span>Ittefaq</span></li><li><span>Raees</span></li><li><span>Mubarakan</span></li><li><span>Secret Superstar</span></li><li><span>Toilet: Ek Prem Katha</span></li><li><span>Bareilly Ki Barfi</span></li><li><span>Mom</span></li><li><span>Kaabil</span></li><li><span>Jagga Jasoos</span></li><li><span>Judwaa 2</span></li><li><span>Half Girlfriend</span></li><li><span>Jab Harry Met Sejal</span></li><li><span>Baadshaho</span></li><li><span>Qarib Qarib Singlle</span></li><li><span>The House Next Door</span></li><li><span>Ajji</span></li><li><span>Love and Shukla</span></li><li><span>Poster Boys</span></li><li><span>B.A. Pass 2</span></li><li class="new"><span>Motu Patlu in Hong Kong: Kung Fu Kings 3 <small>new</small></span></li><li><span>Lucknow Central</span></li><li><span>Running Shaadi</span></li><li class="new"><span>Motu Patlu in Dragon's World <small>new</small></span></li><li class="new"><span>Motu Patlu in Octupus World <small>new</small></span></li><li class="new"><span>Shiva: The Secret World Of Vedas City <small>new</small></span></li><li><span>Rangoon</span></li><li><span>The Wishing Tree</span></li><li><span>Candyflip</span></li><li><span>Bhasmasur</span></li><li><span>Rocky Handsome</span></li><li><span>Baaghi</span></li><li><span>Dangal</span></li><li><span>Dear Zindagi</span></li><li><span>TE3N</span></li><li><span>Mohenjo Daro</span></li><li><span>Wazir</span></li><li><span>Fitoor</span></li><li><span>Pink</span></li><li><span>Kapoor &amp; Sons</span></li><li><span>Raman Raghav 2.0</span></li><li><span>Udta Punjab</span></li><li><span>Santa Banta Pvt Ltd</span></li><li><span>The Legend of Michael Mishra</span></li><li><span>Tu Hai Mera Sunday</span></li><li><span>Shortcut Safari</span></li><li><span>Dear Dad</span></li><li><span>Budhia Singh: Born to Run</span></li><li><span>Autohead</span></li><li><span>Project Marathwada</span></li><li><span>The Violin Player</span></li><li><span>Force 2</span></li><li><span>Gabbar Is Back</span></li><li><span>Drishyam</span></li><li><span>Dilwale</span></li><li><span>Baahubali: The Beginning (Hindi Version)</span></li><li><span>Dil Dhadakne Do</span></li><li><span>Pyaar Ka Punchnama 2</span></li><li><span>Tamasha</span></li><li><span>Phantom</span></li><li><span>Brothers</span></li><li><span>Prem Ratan Dhan Payo</span></li><li><span>ABCD 2</span></li><li><span>Dharam Sankat Mein</span></li><li><span>Shaandaar</span></li><li><span>Bangistan</span></li><li><span>Guilty</span></li><li><span>Hunterrr</span></li><li><span>Haraamkhor</span></li><li><span>X: Past Is Present</span></li><li><span>Katti Batti</span></li><li class="new"><span>Motu Patlu: Khazaane Ki Race <small>new</small></span></li><li><span>Hawaizaada</span></li><li><span>Time Out</span></li><li><span>Zubaan</span></li><li><span>Muzaffarnagar Baaqi Hai</span></li><li><span>PK</span></li><li><span>Happy New Year</span></li><li><span>2 States</span></li><li><span>Khoobsurat</span></li><li><span>Queen</span></li><li><span>Humpty Sharma Ki Dulhania</span></li><li class="new"><span>Motu Patlu: Kung Fu Kings <small>new</small></span></li><li><span>Hasee Toh Phasee</span></li><li><span>Raja Natwarlal</span></li><li><span>Haider</span></li><li><span>Highway</span></li><li><span>Mary Kom</span></li><li><span>Pizza</span></li><li><span>Bobby Jasoos</span></li><li><span>Dedh Ishqiya</span></li><li><span>Mumbai Delhi Mumbai</span></li><li class="new"><span>Motu Patlu: Deep Sea Adventure <small>new</small></span></li><li><span>Mighty Raju Rio Calling</span></li><li><span>Court</span></li><li><span>Gollu aur Pappu</span></li><li><span>Ungli</span></li><li><span>Yeh Hai Bakrapur</span></li><li><span>One by Two</span></li><li><span>Chal Bhaag</span></li><li><span>Special 26</span></li><li><span>Boss</span></li><li><span>Madras Café</span></li><li><span>Race 2</span></li><li><span>Himmatwala</span></li><li><span>ABCD: Any Body Can Dance</span></li><li><span>Fukrey</span></li><li><span>Kai Po Che!</span></li><li><span>Gori Tere Pyaar Mein</span></li><li><span>Chashme Baddoor</span></li><li><span>Nasha</span></li><li><span>Ghanchakkar</span></li><li><span>B.A. Pass</span></li><li><span>Ankhon Dekhi</span></li><li><span>Inkaar</span></li><li><span>Saheb Biwi Aur Gangster Returns</span></li><li><span>Bombay Talkies</span></li><li><span>Satyagraha</span></li><li class="new"><span>Motu Patlu: Mission Moon <small>new</small></span></li><li><span>Deewana Main Deewana</span></li><li class="new"><span>Motu Patlu in Wonderland <small>new</small></span></li><li><span>Liar's Dice</span></li><li class="new"><span>Keymon and Nani in Space Adventure <small>new</small></span></li><li><span>What the Fish</span></li><li><span>War Chhod Na Yaar</span></li><li><span>Oh My God</span></li><li><span>Rowdy Rathore</span></li><li><span>Players</span></li><li><span>Joker</span></li><li><span>Barfi!</span></li><li><span>Kahaani</span></li><li><span>Talaash</span></li><li><span>Ferrari Ki Sawaari</span></li><li><span>Aiyyaa</span></li><li><span>Luv Shuv Tey Chicken Khurana</span></li><li><span>Ek Main Aur Ekk Tu</span></li><li><span>Heroine</span></li><li><span>Chhota Bheem and the Curse of Damyaan</span></li><li><span>Blood Money</span></li><li><span>Fatso</span></li><li><span>Tere Naal Love Ho Gaya</span></li><li><span>Mumbai Cha Raja</span></li><li><span>Life Ki Toh Lag Gayi</span></li><li><span>Bittoo Boss</span></li><li><span>Singham</span></li><li><span>Zindagi Na Milegi Dobara</span></li><li><span>Don 2</span></li><li><span>Bodyguard</span></li><li><span>Thank You</span></li><li><span>Bbuddah Hoga Terra Baap</span></li><li><span>Game</span></li><li><span>Chillar Party</span></li><li><span>No One Killed Jessica</span></li><li><span>Arjun: The Warrior Prince</span></li><li><span>Tanu Weds Manu</span></li><li><span>Zokkomon</span></li><li><span>7 Khoon Maaf</span></li><li><span>My Friend Pinto</span></li><li><span>Shaitan</span></li><li><span>Michael</span></li><li><span>Action Replayy</span></li><li><span>I Am Kalam</span></li><li><span>I Hate Luv Storys</span></li><li><span>Raajneeti</span></li><li><span>Paan Singh Tomar</span></li><li><span>Tum Milo Toh Sahi</span></li><li class="added"><span>Dhobi Ghat (Mumbai Diaries) <small>readded</small></span></li><li><span>We Are Family</span></li><li><span>Udaan</span></li><li><span>Do Dooni Chaar</span></li><li><span>Break Ke Baad</span></li><li><span>Karthik Calling Karthik</span></li><li><span>Chance Pe Dance</span></li><li><span>Guzaarish</span></li><li class="added"><span>Peepli Live <small>readded</small></span></li><li><span>I Am</span></li><li><span>That Girl in Yellow Boots</span></li><li><span>3 Idiots</span></li><li><span>Dhoondte Reh Jaoge</span></li><li><span>Ajab Prem Ki Ghazab Kahani</span></li><li><span>Wake Up Sid</span></li><li><span>Billu</span></li><li><span>What's Your Raashee?</span></li><li><span>Delhi 6</span></li><li><span>Kurbaan</span></li><li><span>Agyaat</span></li><li><span>Do Paise Ki Dhoop Chaar Aane Ki Baarish</span></li><li><span>Luck by Chance</span></li><li><span>Well Done Abba</span></li><li><span>Main aurr Mrs. Khanna</span></li><li><span>Aagey Se Right</span></li><li><span>Kisaan</span></li><li><span>Kaminey</span></li><li><span>Ishqiya</span></li><li><span>Dev.D</span></li><li><span>Golmaal Returns</span></li><li><span>Jodhaa Akbar</span></li><li class="added"><span>Jaane Tu... Ya Jaane Na <small>readded</small></span></li><li><span>Dostana</span></li><li><span>Race</span></li><li><span>Oye Lucky! Lucky Oye!</span></li><li><span>Kismat Konnection</span></li><li><span>Fashion</span></li><li><span>Rock On!!</span></li><li><span>Mumbai Meri Jaan</span></li><li><span>Contract</span></li><li><span>Welcome to Sajjanpur</span></li><li><span>Aamir</span></li><li><span>Ugly Aur Pagli</span></li><li class="added"><span>Taare Zameen Par <small>readded</small></span></li><li><span>Om Shanti Om</span></li><li><span>Welcome</span></li><li><span>Namastey London</span></li><li><span>Jab We Met</span></li><li><span>Guru</span></li><li><span>Dhan Dhana Dhan Goal</span></li><li><span>Honeymoon Travels Pvt. Ltd.</span></li><li><span>Manorama Six Feet Under</span></li><li><span>Life in a ... Metro</span></li><li><span>Hattrick</span></li><li><span>Phir Hera Pheri</span></li><li><span>Chup Chup Ke</span></li><li><span>Vivah</span></li><li><span>Kabhi Alvida Naa Kehna</span></li><li><span>Don</span></li><li><span>Rang De Basanti</span></li><li><span>Anthony Kaun Hai?</span></li><li><span>Pyaar Ke Side Effects</span></li><li><span>BluffMaster!</span></li><li><span>Paheli</span></li><li><span>Kaal</span></li><li><span>Main, Meri Patni Aur Woh</span></li><li><span>Apaharan</span></li><li><span>Ek Khiladi Ek Haseena</span></li><li><span>Shabd</span></li><li><span>The Blue Umbrella</span></li><li><span>Main Hoon Na</span></li><li><span>Swades</span></li><li><span>Lakshya</span></li><li><span>Yuva</span></li><li><span>Fida</span></li><li><span>Black Friday</span></li><li><span>Chameli</span></li><li><span>Kal Ho Naa Ho</span></li><li><span>Gangaajal</span></li><li><span>Chalte Chalte</span></li><li><span>Ishq Vishk</span></li><li><span>Jhankaar Beats</span></li><li><span>Mumbai Matinee</span></li><li><span>Hazaaron Khwaishein Aisi</span></li><li><span>Awara Paagal Deewana</span></li><li><span>The Legend of Bhagat Singh</span></li><li><span>Sur: The Melody of Life</span></li><li class="added"><span>Lagaan <small>readded</small></span></li><li><span>Kabhi Khushi Kabhie Gham</span></li><li><span>Dil Chahta Hai</span></li><li><span>One 2 Ka 4</span></li><li><span>Asoka</span></li><li><span>Phir Bhi Dil Hai Hindustani</span></li><li><span>Fiza</span></li><li><span>Hum Saath-Saath Hain</span></li><li><span>Hello Brother</span></li><li><span>Mann</span></li><li><span>Kuch Kuch Hota Hai</span></li><li><span>Soldier</span></li><li><span>Dil Se</span></li><li><span>Duplicate</span></li><li><span>Qila</span></li><li><span>Chaahat</span></li><li><span>English Babu Desi Mem</span></li><li><span>Ram Jaane</span></li><li><span>Oh Darling Yeh Hai India</span></li><li><span>Andaz Apna Apna</span></li><li><span>Hum Aapke Hain Koun</span></li><li><span>Kabhi Haan Kabhi Naa</span></li><li><span>Yaar Gaddar</span></li><li><span>Aashik Awara</span></li><li><span>Gumrah</span></li><li><span>Maya Memsaab</span></li><li><span>Chamatkar</span></li><li><span>Shikari</span></li><li><span>Agneepath</span></li><li><span>Dil</span></li><li><span>Mujrim</span></li><li><span>Aakhri Adaalat</span></li><li><span>Muqaddar ka Faisla</span></li><li><span>Jaal</span></li><li><span>Pyar Ke Do Pal</span></li><li><span>Sohni Mahiwal</span></li><li><span>Duniya</span></li><li><span>Ek Jaan Hain Hum</span></li><li><span>Disco Dancer</span></li><li><span>Dostana (1980)</span></li><li><span>Alibaba Aur 40 Chor</span></li><li><span>Bandie</span></li><li><span>Salaakhen</span></li><li><span>Manoranjan</span></li><li><span>Khoon Khoon</span></li><li><span>Elaan</span></li><li><span>Lal Patthar</span></li><li><span>Prince</span></li><li><span>Amrapali</span></li><li><span>Professor</span></li><li><span>Singapore</span></li><li><span>Ujala</span></li></ol>
 
-    <ol id="list">
-      <li>Pagglait <small><i>(new)</i></small></li>
-      <li>The Girl on the Train <small><i>(new)</i></small></li>
-      <li>Tribhanga - Tedhi Medhi Crazy</li>
-      <li>Bombay Rose <small><i>(new)</i></small></li>
-      <li>Indoo Ki Jawani <small><i>(new)</i></small></li>
-      <li>Gunjan Saxena: The Kargil Girl</li>
-      <li>Ginny Weds Sunny</li>
-      <li>Madam Chief Minister <small><i>(new)</i></small></li>
-      <li>Shimla Mirchi</li>
-      <li>Class of '83</li>
-      <li>Jai Mummy Di</li>
-      <li>Door Ke Darshan</li>
-      <li>Bulbbul</li>
-      <li>Raat Akeli Hai</li>
-      <li>Serious Men</li>
-      <li>Mrs. Serial Killer</li>
-      <li>AK vs AK</li>
-      <li>Love Aaj Kal</li>
-      <li>Little Singham: Kaal Ka Badla</li>
-      <li>Choked: Paisa Bolta Hai</li>
-      <li>Guilty</li>
-      <li>Dolly Kitty Aur Woh Chamakte Sitare</li>
-      <li>Maska</li>
-      <li>Torbaaz</li>
-      <li>Ghost Stories</li>
-      <li>Chaman Bahaar</li>
-      <li>Little Singham: Legend of Dugabakka</li>
-      <li>Chippa</li>
-      <li>Axone</li>
-      <li>Kaali Khuhi</li>
-      <li>Yeh Ballet</li>
-      <li>Har Kisse Ke Hisse: Kaamyaab</li>
-      <li>Cargo</li>
-      <li>Ludo</li>
-      <li>Fukrey Boyzzz: Space Mein Fukrapanti</li>
-      <li>Malang</li>
-      <li>What Are the Odds?</li>
-      <li>Article 15</li>
-      <li>Drive</li>
-      <li>The Sky Is Pink</li>
-      <li>Badla</li>
-      <li>The Body</li>
-      <li>Bypass Road</li>
-      <li>Kabir Singh</li>
-      <li>Luka Chuppi</li>
-      <li>Made in China</li>
-      <li>Ek Ladki Ko Dekha Toh Aisa Laga</li>
-      <li>One Day: Justice Delivered</li>
-      <li>Motichoor Chaknachoor</li>
-      <li>Panipat - The Great Betrayal</li>
-      <li>Romeo Akbar Walter</li>
-      <li>Thackeray (Hindi)</li>
-      <li>The Zoya Factor</li>
-      <li>Game Over (Hindi Version)</li>
-      <li>House Arrest</li>
-      <li>Pranaam</li>
-      <li>Bhangra Paa Le</li>
-      <li>Chopsticks</li>
-      <li>Chhota Bheem Kungfu Dhamaka</li>
-      <li>Malaal</li>
-      <li>Little Singham: Kaal Ki Tabaahi</li>
-      <li>Little Singham in London</li>
-      <li>Upstarts</li>
-      <li>Eeb Allay Ooo!</li>
-      <li>Little Singham: Mahabali</li>
-      <li>Paharganj</li>
-      <li>Music Teacher</li>
-      <li>Little Singham Bandarpur Mein Hu Ha Hu</li>
-      <li>Penalty</li>
-      <li>Mere Pyare Prime Minister</li>
-      <li>Saaho</li>
-      <li>Rakkhosh</li>
-      <li>Albert Pinto Ko Gussa Kyun Aata Hai?</li>
-      <li>Andhadhun</li>
-      <li>Is Love Enough? Sir</li>
-      <li>Stree</li>
-      <li>Parmanu: The Story of Pokhran</li>
-      <li>Aiyaary</li>
-      <li>Pad Man</li>
-      <li>Baazaar</li>
-      <li>Zero</li>
-      <li>Sanju</li>
-      <li>Love Per Square Foot</li>
-      <li>Lust Stories</li>
-      <li>Lupt</li>
-      <li>Mard Ko Dard Nahi Hota</li>
-      <li>Soorma</li>
-      <li>Pihu</li>
-      <li>Rajma Chawal</li>
-      <li>Ascharyachakit!</li>
-      <li>Beyond the Clouds</li>
-      <li>Hope Aur Hum</li>
-      <li>Jaoon Kahan Bata Ae Dil</li>
-      <li>Soni</li>
-      <li>Chhota Bheem Ka Romani Adventure</li>
-      <li>Evening Shadows</li>
-      <li>Bhavesh Joshi Superhero</li>
-      <li>Samudri Lootere</li>
-      <li>Garbage</li>
-      <li>My Birthday Song</li>
-      <li>Brij Mohan Amar Rahe</li>
-      <li>Manto</li>
-      <li>Dragonkala Ka Rahasya</li>
-      <li>Kuchh Bheege Alfaaz</li>
-      <li>Halkaa</li>
-      <li>Super Bheem Bana Vajraveer</li>
-      <li>Bheemayan</li>
-      <li>Three and a Half</li>
-      <li>Period. End of Sentence.</li>
-      <li>Life of An Outcast</li>
-      <li>Antariksha Ke Rakhwale</li>
-      <li>Bombairiya</li>
-      <li>Hamid</li>
-      <li>Ladies First</li>
-      <li>Zoo</li>
-      <li>Baahubali 2: The Conclusion (Hindi Version)</li>
-      <li>Naam Shabana</li>
-      <li>Ittefaq</li>
-      <li>Mubarakan</li>
-      <li>Judwaa 2</li>
-      <li>Half Girlfriend</li>
-      <li>Raees</li>
-      <li>Jagga Jasoos</li>
-      <li>Bareilly Ki Barfi</li>
-      <li>Secret Superstar</li>
-      <li>Mom</li>
-      <li>Toilet: Ek Prem Katha</li>
-      <li>Baadshaho</li>
-      <li>Jab Harry Met Sejal</li>
-      <li>Qarib Qarib Singlle</li>
-      <li>Kaabil</li>
-      <li>Poster Boys</li>
-      <li>The House Next Door</li>
-      <li>Gurgaon</li>
-      <li>Love and Shukla</li>
-      <li>Lucknow Central</li>
-      <li>B.A. Pass 2</li>
-      <li>Rangoon</li>
-      <li>Ajji</li>
-      <li>Running Shaadi</li>
-      <li>The Wishing Tree</li>
-      <li>Candyflip</li>
-      <li>Bhasmasur</li>
-      <li>Baaghi</li>
-      <li>Dangal</li>
-      <li>Rocky Handsome</li>
-      <li>Dear Zindagi</li>
-      <li>Mohenjo Daro</li>
-      <li>Kapoor &amp; Sons</li>
-      <li>Pink</li>
-      <li>Fitoor</li>
-      <li>TE3N</li>
-      <li>Wazir <small><i>(new)</i></small></li>
-      <li>Udta Punjab</li>
-      <li>Raman Raghav 2.0</li>
-      <li>The Legend of Michael Mishra</li>
-      <li>Santa Banta Pvt Ltd</li>
-      <li>Tu Hai Mera Sunday</li>
-      <li>Budhia Singh: Born to Run</li>
-      <li>Shortcut Safari</li>
-      <li>Autohead</li>
-      <li>Force 2</li>
-      <li>The Violin Player</li>
-      <li>Dear Dad</li>
-      <li>Project Marathwada</li>
-      <li>CRD</li>
-      <li>Baahubali: The Beginning (Hindi Version)</li>
-      <li>Drishyam</li>
-      <li>Dilwale</li>
-      <li>Gabbar Is Back</li>
-      <li>Dil Dhadakne Do</li>
-      <li>Tamasha</li>
-      <li>Shaandaar</li>
-      <li>ABCD 2</li>
-      <li>Prem Ratan Dhan Payo</li>
-      <li>Dharam Sankat Mein</li>
-      <li>Pyaar Ka Punchnama 2</li>
-      <li>Brothers</li>
-      <li>Guilty</li>
-      <li>Phantom</li>
-      <li>Bangistan</li>
-      <li>X: Past Is Present</li>
-      <li>Hunterrr</li>
-      <li>Haraamkhor</li>
-      <li>Katti Batti</li>
-      <li>Waiting</li>
-      <li>Hawaizaada</li>
-      <li>Time Out</li>
-      <li>Zubaan</li>
-      <li>Muzaffarnagar Baaqi Hai</li>
-      <li>Happy New Year</li>
-      <li>PK</li>
-      <li>2 States</li>
-      <li>Khoobsurat</li>
-      <li>Humpty Sharma Ki Dulhania</li>
-      <li>Raja Natwarlal</li>
-      <li>Hasee Toh Phasee</li>
-      <li>Queen</li>
-      <li>Highway</li>
-      <li>Haider</li>
-      <li>Bobby Jasoos</li>
-      <li>Mary Kom</li>
-      <li>Mighty Raju Rio Calling</li>
-      <li>Mumbai Delhi Mumbai</li>
-      <li>Pizza</li>
-      <li>Ungli</li>
-      <li>Dedh Ishqiya</li>
-      <li>Gollu aur Pappu</li>
-      <li>One by Two</li>
-      <li>Court</li>
-      <li>Chal Bhaag</li>
-      <li>Yeh Hai Bakrapur</li>
-      <li>Boss</li>
-      <li>Special 26</li>
-      <li>Madras Café</li>
-      <li>ABCD: Any Body Can Dance</li>
-      <li>Race 2</li>
-      <li>Gori Tere Pyaar Mein</li>
-      <li>Chashme Baddoor</li>
-      <li>Himmatwala</li>
-      <li>Fukrey</li>
-      <li>Kai Po Che!</li>
-      <li>B.A. Pass</li>
-      <li>Nasha</li>
-      <li>Saheb Biwi Aur Gangster Returns</li>
-      <li>Ghanchakkar</li>
-      <li>Bombay Talkies</li>
-      <li>Inkaar</li>
-      <li>Satyagraha</li>
-      <li>What the Fish</li>
-      <li>Deewana Main Deewana</li>
-      <li>Liar's Dice</li>
-      <li>Ankhon Dekhi</li>
-      <li>War Chhod Na Yaar</li>
-      <li>Fireflies</li>
-      <li>Oh My God</li>
-      <li>Rowdy Rathore</li>
-      <li>Joker</li>
-      <li>Players</li>
-      <li>Barfi!</li>
-      <li>Talaash</li>
-      <li>Kahaani</li>
-      <li>Luv Shuv Tey Chicken Khurana</li>
-      <li>Aiyyaa</li>
-      <li>Ek Main Aur Ekk Tu</li>
-      <li>Heroine</li>
-      <li>Chhota Bheem and the Curse of Damyaan</li>
-      <li>Blood Money</li>
-      <li>Ferrari Ki Sawaari <small><i>(new)</i></small></li>
-      <li>Tere Naal Love Ho Gaya</li>
-      <li>Life Ki Toh Lag Gayi</li>
-      <li>Bittoo Boss</li>
-      <li>Fatso</li>
-      <li>Mumbai Cha Raja</li>
-      <li>Singham</li>
-      <li>Zindagi Na Milegi Dobara</li>
-      <li>Don 2</li>
-      <li>Bodyguard</li>
-      <li>Thank You</li>
-      <li>Game</li>
-      <li>Bbuddah Hoga Terra Baap</li>
-      <li>No One Killed Jessica</li>
-      <li>Chillar Party</li>
-      <li>Arjun: The Warrior Prince</li>
-      <li>Tanu Weds Manu</li>
-      <li>7 Khoon Maaf</li>
-      <li>Zokkomon</li>
-      <li>Shaitan</li>
-      <li>Michael</li>
-      <li>My Friend Pinto</li>
-      <li>I Hate Luv Storys</li>
-      <li>I Am Kalam</li>
-      <li>Paan Singh Tomar</li>
-      <li>Action Replayy</li>
-      <li>Raajneeti</li>
-      <li>Tum Milo Toh Sahi</li>
-      <li>Udaan</li>
-      <li>We Are Family</li>
-      <li>Chance Pe Dance</li>
-      <li>Karthik Calling Karthik</li>
-      <li>Do Dooni Chaar</li>
-      <li>Break Ke Baad</li>
-      <li>Guzaarish</li>
-      <li>That Girl in Yellow Boots</li>
-      <li>I Am</li>
-      <li>Dhoondte Reh Jaoge</li>
-      <li>Ajab Prem Ki Ghazab Kahani</li>
-      <li>Wake Up Sid</li>
-      <li>Billu</li>
-      <li>Kurbaan</li>
-      <li>Delhi 6</li>
-      <li>3 Idiots <small><i>(new)</i></small></li>
-      <li>What's Your Raashee?</li>
-      <li>Ishqiya</li>
-      <li>Well Done Abba</li>
-      <li>Agyaat</li>
-      <li>Dev.D</li>
-      <li>Luck by Chance</li>
-      <li>Aagey Se Right</li>
-      <li>Do Paise Ki Dhoop Chaar Aane Ki Baarish</li>
-      <li>Kisaan</li>
-      <li>Main aurr Mrs. Khanna</li>
-      <li>Kaminey</li>
-      <li>Golmaal Returns</li>
-      <li>Jodhaa Akbar</li>
-      <li>Race</li>
-      <li>Dostana</li>
-      <li>Kismat Konnection</li>
-      <li>Rock On!!</li>
-      <li>Oye Lucky! Lucky Oye!</li>
-      <li>Mumbai Meri Jaan</li>
-      <li>Fashion</li>
-      <li>Welcome to Sajjanpur</li>
-      <li>Ugly Aur Pagli</li>
-      <li>Contract</li>
-      <li>Aamir</li>
-      <li>Om Shanti Om</li>
-      <li>Welcome</li>
-      <li>Jab We Met</li>
-      <li>Dhan Dhana Dhan Goal</li>
-      <li>Guru</li>
-      <li>Namastey London</li>
-      <li>Manorama Six Feet Under</li>
-      <li>Honeymoon Travels Pvt. Ltd.</li>
-      <li>Life in a ... Metro</li>
-      <li>Hattrick</li>
-      <li>Chup Chup Ke</li>
-      <li>Phir Hera Pheri</li>
-      <li>Don</li>
-      <li>Kabhi Alvida Naa Kehna</li>
-      <li>Rang De Basanti</li>
-      <li>Vivah</li>
-      <li>Anthony Kaun Hai?</li>
-      <li>Pyaar Ke Side Effects</li>
-      <li>BluffMaster!</li>
-      <li>Kaal</li>
-      <li>Paheli</li>
-      <li>Apaharan</li>
-      <li>Shabd</li>
-      <li>The Blue Umbrella</li>
-      <li>Main, Meri Patni Aur Woh</li>
-      <li>Ek Khiladi Ek Haseena</li>
-      <li>Main Hoon Na</li>
-      <li>Swades</li>
-      <li>Lakshya</li>
-      <li>Yuva</li>
-      <li>Chameli</li>
-      <li>Fida</li>
-      <li>Black Friday</li>
-      <li>Kal Ho Naa Ho</li>
-      <li>Gangaajal</li>
-      <li>Chalte Chalte</li>
-      <li>Ishq Vishk</li>
-      <li>Mumbai Matinee</li>
-      <li>Hazaaron Khwaishein Aisi</li>
-      <li>Jhankaar Beats</li>
-      <li>Awara Paagal Deewana</li>
-      <li>The Legend of Bhagat Singh</li>
-      <li>Sur: The Melody of Life</li>
-      <li>Kabhi Khushi Kabhie Gham</li>
-      <li>Dil Chahta Hai</li>
-      <li>Asoka</li>
-      <li>One 2 Ka 4</li>
-      <li>Phir Bhi Dil Hai Hindustani</li>
-      <li>Fiza</li>
-      <li>Hum Saath-Saath Hain</li>
-      <li>Hello Brother</li>
-      <li>Mann</li>
-      <li>Kuch Kuch Hota Hai</li>
-      <li>Duplicate</li>
-      <li>Dil Se</li>
-      <li>Soldier</li>
-      <li>Qila</li>
-      <li>Chaahat</li>
-      <li>English Babu Desi Mem</li>
-      <li>Ram Jaane</li>
-      <li>Oh Darling Yeh Hai India</li>
-      <li>Andaz Apna Apna</li>
-      <li>Hum Aapke Hain Koun</li>
-      <li>Kabhi Haan Kabhi Naa</li>
-      <li>Yaar Gaddar</li>
-      <li>Aashik Awara</li>
-      <li>Gumrah</li>
-      <li>Maya Memsaab</li>
-      <li>Chamatkar</li>
-      <li>Shikari</li>
-      <li>Agneepath</li>
-      <li>Dil</li>
-      <li>Mujrim</li>
-      <li>Aakhri Adaalat</li>
-      <li>Muqaddar ka Faisla</li>
-      <li>Jaal</li>
-      <li>Pyar Ke Do Pal</li>
-      <li>Duniya</li>
-      <li>Sohni Mahiwal</li>
-      <li>Ek Jaan Hain Hum</li>
-      <li>Disco Dancer</li>
-      <li>Dostana (1980)</li>
-      <li>Alibaba Aur 40 Chor</li>
-      <li>Bandie</li>
-      <li>Salaakhen</li>
-      <li>Manoranjan</li>
-      <li>Khoon Khoon</li>
-      <li>Elaan</li>
-      <li>Lal Patthar</li>
-      <li>Prince</li>
-      <li>Amrapali</li>
-      <li>Professor</li>
-      <li>Singapore</li>
-      <li>Ujala</li>
-    </ol>
-
-    <h2>Removed titles</h2>
-    <ol id="removed">
-      <li>706</li>
-      <li>Rukh</li>
-      <li>The Silence</li>
-      <li>Azhar</li>
-      <li>Horror Story</li>
-      <li>Beyond All Boundaries</li>
-      <li>Dhobi Ghat (Mumbai Diaries)</li>
-      <li>Peepli Live</li>
-      <li>Jaane Tu... Ya Jaane Na</li>
-      <li>Taare Zameen Par</li>
-      <li>Socha Na Tha</li>
-      <li>Lagaan</li>
-    </ol>
+    <h2 id="removed-anchor">Removed titles</h2>
+    <ol id="removed"><li>Little Singham in London</li><li>Lupt</li><li>Gurgaon</li><li>CRD</li><li>Waiting</li><li>Fireflies</li><li>706</li><li>Rukh</li><li>The Silence</li><li>Azhar</li><li>Horror Story</li><li>Beyond All Boundaries</li><li>Socha Na Tha</li></ol>
   </main>
 </body>
 
