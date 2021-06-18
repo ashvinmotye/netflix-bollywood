@@ -9,7 +9,7 @@ console.log(movies.length);
 copy(movies)
 
 // REMOVED
-var allRemoved = [];
-document.querySelectorAll("#removed li").forEach(li => allRemoved.push(li.innerText));
+var allRemovedBrowser = [];
+document.querySelectorAll("#removed li").forEach(li => allRemovedBrowser.push(li.innerText));
 
-copy(allRemoved);
+copy(allRemovedBrowser);
